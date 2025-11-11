@@ -1,9 +1,9 @@
 name: Update Letterboxd JSON
 
 on:
-  schedule:
-    - cron: '0 3 * * *' # every day 03:00 UTC
   workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * *' # daily at 3am UTC
 
 jobs:
   update:
@@ -17,14 +17,14 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install cheerio fs-extra
+        run: npm install cheerio@1.0.0-rc.12 fs-extra
 
       - name: Run scraper
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
         run: node update-letterboxd.js
 
-      - name: Commit updated JSON
+      - name: Commit JSON
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
