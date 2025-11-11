@@ -9,7 +9,7 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      # 1️⃣ Checkout code
+      # 1️⃣ Checkout repo
       - uses: actions/checkout@v4
 
       # 2️⃣ Setup Node 18
@@ -39,4 +39,4 @@ jobs:
           git commit -m "Update Letterboxd JSON" || echo "No changes"
 
           # Push using token in HTTPS URL
-          git push https://x-access-token:${GITHUB_TOKEN}@github.com/vkworkofficial/letterboxd-slider./ main
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/vkworkofficial/letterboxd-slider main
